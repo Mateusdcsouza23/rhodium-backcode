@@ -3,23 +3,31 @@ package rhoudim.com.br.rhodiumcode.dtos
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 
-data class UsuarioDto(
+data class FuncionarioDto(
+
     @field:NotNull
-    var dCodU:Long,
+    var idFuncionario:Long,
 
     @field:NotNull
     @field:NotBlank
-    var dNome:String,
+    var nome:String,
 
     @field:NotNull
     @field:NotBlank
-    var dCargo:String,
+    var email:String,
+
+    @field:NotNull
+    @field:NotBlank
+    var cargo:String,
 
 
     @field:NotNull
-    var chavPerm:Long,
+    var fkDepartamento:Long,
 
     @field:NotNull
-    var chaveEmp:Long,
+    var fkEmpresa:Long,
+
+//    @field:NotNull
+//    var fkPermissao:Long,
 
 )
