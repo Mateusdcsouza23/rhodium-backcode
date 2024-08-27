@@ -17,26 +17,34 @@ class BatePonto(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var IDBatida: Long? = null,
+    var idBatida: Long? = null,
 
     @ManyToOne
     @JoinColumn(name= "fk_funcionario", referencedColumnName = "idFuncionario")
-    var fkFuncionario: Funcionario,
+    var fkFuncionario: Funcionario? = null,
 
 
     @ManyToOne
     @JoinColumn(name= "fk_empresa", referencedColumnName = "idEmpresa")
-    var fkEmpresa: Empresa,
+    var fkEmpresa: Empresa? = null,
+
 
     var dataB:LocalDate? = LocalDate.now(),
-    var hora: LocalTime? = LocalTime.now()
+    var hora: LocalTime? = LocalTime.now(),
+
+    var entrada: Boolean? = false,
+    var saida: Boolean? = false,
 
 ) {
 
     constructor(registraPonto:BatePontoDto, fkFuncionario:Funcionario, fkEmpresa:Empresa): this(
         registraPonto.IDBatida,
         fkFuncionario,
-        fkEmpresa
+        fkEmpresa,
+        LocalDate.now(),
+        LocalTime.now(),
+        registraPonto.entrada,
+        registraPonto.saida
         )
 
 

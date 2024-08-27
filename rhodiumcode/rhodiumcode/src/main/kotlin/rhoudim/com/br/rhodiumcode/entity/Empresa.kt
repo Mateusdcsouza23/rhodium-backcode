@@ -12,11 +12,18 @@ class Empresa(
     var idEmpresa: Long? = null,
     var nomeEmpresa:String? = null,
     var endereco:String? = null,
-    var segmento:String? = null
+    var segmento:String? = null,
+    var emailCorporativo:String? = null,
+    var telefone:String? = null,
 ) {
 
     constructor(empresa:EmpresaDto): this(
-        empresa.idEmpresa
+        empresa.idEmpresa,
+        empresa.nomeEmpresa,
+        empresa.endereco,
+        empresa.segmento,
+        empresa.emailCorporativo,
+        empresa.telefone
     )
 
 }

@@ -20,6 +20,10 @@ data class FuncionarioDto(
     @field:NotBlank
     var cargo:String,
 
+    @field:NotNull
+    @field:NotBlank
+    var senha:String,
+
 
     @field:NotNull
     var fkDepartamento:Long,

@@ -8,9 +8,10 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
 import rhoudim.com.br.rhodiumcode.dtos.FuncionarioDto
+import java.util.*
 
 @Entity(name = "Funcionario")
-@Table(name = "Funcionarios")
+@Table(name = "funcionarios")
 class Funcionario(
 
     @Id
@@ -18,6 +19,7 @@ class Funcionario(
     var idFuncionario:Long? = null,
     var nome:String? = null,
     var email:String? = null,
+    var senha:String? = null,
     var cargo:String? = null,
 
     @ManyToOne
@@ -38,6 +40,7 @@ class Funcionario(
             funcionario.idFuncionario,
             funcionario.nome,
             funcionario.email,
+            funcionario.senha,
             funcionario.cargo,
             fkDepartamento,
             fkEmpresa,
