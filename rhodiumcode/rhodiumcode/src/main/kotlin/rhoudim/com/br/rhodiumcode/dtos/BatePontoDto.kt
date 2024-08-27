@@ -6,7 +6,6 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 data class BatePontoDto(
-
 //    @field:NotNull
     var IDBatida:Long?,
 
@@ -16,11 +15,11 @@ data class BatePontoDto(
     @field:NotNull
     var fkEmpresa:Long,
 
-//    @field:NotBlank
-//    @field:NotNull
-//    var dataB:LocalDate,
-//
+    var entrada:Boolean,
+    var saida:Boolean
+
 //    @field:NotBlank
 //    @field:NotNull
 //    var hora:LocalTime
+
 )
