@@ -6,9 +6,10 @@ import rhoudim.com.br.rhodiumcode.entity.Funcionario
 import rhoudim.com.br.rhodiumcode.entity.Usuario
 import java.util.*
 
+@Repository
 interface FuncionarioRepository : JpaRepository<Funcionario, Long> {
 
     fun findByEmailAndSenha(email:String, senha:String): Funcionario
-     fun save(listaFuncionarios: List<Funcionario>)
+     fun save(listaFuncionarios: List<Funcionario>)v
 
 }

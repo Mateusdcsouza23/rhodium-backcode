@@ -30,9 +30,13 @@ class BatePontoController {
     lateinit var empresaRepository: EmpresaRepository
 
     @Autowired
-    lateinit var funcionarioRepository: FuncionarioRepository
+    lateinit var funcionarioRepository: FuncionarioRepositoryv
 
+    @Autowired
+    private val horasExtrasService: HorasExtrasService
 
+    @Autowired
+    private val faltasService: FaltasService
 
     @PostMapping("/bater")
     fun registrarPonto(@RequestBody @Valid registroPonto:BatePontoDto): ResponseEntity<BatePontoResponse> {
@@ -94,5 +98,29 @@ class BatePontoController {
         return ResponseEntity.status(404).build()
     }
 
+    @GetMapping("/horasExtras/{idFuncionario}")
+    fun obterHorasExtras(@PathVariable idFuncionario: Long): ResponseEntity<Duration> {
+        val horasExtras = horasExtrasService.calcularHorasExtrasFuncionario(idFuncionario)
+        return ResponseEntity.ok(horasExtras)
+    }
 
+    @GetMapping("/horasExtras/departamento/{idDepartamento}")
+    fun obterHorasExtrasPorDepartamento(@PathVariable idDepartamento: Long): ResponseEntity<Map<String, Duration>> {
+        val horasExtras = horasExtrasService.findHorasExtrasByDepartamento(idDepartamento)
+        return ResponseEntity.ok(horasExtras)
+    }
+    @GetMapping("/faltas/departamento/{idDepartamento}")
+    fun obterFaltasPorDepartamento(
+            @PathVariable idDepartamento: Long,
+            @RequestParam data: LocalDate
+    ): ResponseEntity<Map<String, List<BatePonto>>> {
+        val faltas = faltasService.findFaltasByDepartamento(idDepartamento, data)
+        return ResponseEntity.ok(faltas)
+    }
+
+    @GetMapping("/faltas/hoje")
+    fun obterFaltasHoje(): ResponseEntity<Map<String, List<BatePonto>>> {
+        val faltas = faltasService.findAllFaltasHoje()
+        return ResponseEntity.ok(faltas)
+    }
 }
