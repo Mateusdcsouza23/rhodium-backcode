@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails
 import java.util.List
 
 @Entity(name = "Usuario")
-@Table(name = "Funcionarios")
+@Table(name = "Funcionario")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +25,9 @@ class Usuario (
     @ManyToOne
     @JoinColumn(name = "fk_empresa", referencedColumnName = "idEmpresa")
     var fkEmpresa: Empresa? = null,
+    @ManyToOne
+    @JoinColumn(name = "fk_tipo_usuario", referencedColumnName = "idTipo")
+    var fkTipoUsuario: TipoUsuario? = null,
 ) : UserDetails {
 
     override fun getAuthorities(): Collection<GrantedAuthority?> {

@@ -11,7 +11,7 @@ import rhoudim.com.br.rhodiumcode.dtos.FuncionarioDto
 import java.util.*
 
 @Entity(name = "Funcionario")
-@Table(name = "funcionarios")
+@Table(name = "Funcionario")
 class Funcionario(
 
     @Id

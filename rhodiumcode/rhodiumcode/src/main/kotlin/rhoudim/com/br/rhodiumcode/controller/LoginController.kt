@@ -58,6 +58,7 @@ class LoginController {
                 user.email,
                 user.nome,
                 user.fkEmpresa,
+                user.fkTipoUsuario,
                 token
             )
             return ResponseEntity.status(200).body(usuarioResponse)

@@ -12,7 +12,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 @Entity(name = "BatePonto")
-@Table(name = "BatidasDePonto")
+@Table(name = "batidasdeponto")
 class BatePonto(
 
     @Id
