@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param
 import rhoudim.com.br.rhodiumcode.entity.BatePonto
 import java.time.LocalDate
 
+@Repository
 interface RegistroRepositorySaida : JpaRepository<BatePonto, Long> {
 
     @Query(
@@ -19,6 +20,12 @@ interface RegistroRepositorySaida : JpaRepository<BatePonto, Long> {
     fun countByFkFuncionarioAndDataB(
         @Param("fkFuncionarioId") fkFuncionarioId: Long,
         @Param("currentDate") currentDate: LocalDate
-    ): Int
+    ): Intv
+
+    // Consulta para buscar os registros sem marcação de saída de um funcionário
+    @Query(
+            "SELECT bp FROM BatePonto bp WHERE bp.fkFuncionario.idFuncionario = :fkFuncionarioId AND bp.registroSaida IS NULL"
+    )
+    fun findRegistrosSemSaida(@Param("fkFuncionarioId") fkFuncionarioId: Long): List<BatePonto>
 
 }
