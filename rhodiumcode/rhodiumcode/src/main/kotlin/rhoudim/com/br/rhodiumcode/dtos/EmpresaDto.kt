@@ -13,9 +13,9 @@ data class EmpresaDto(
     @field: NotBlank
     var nomeEmpresa:String,
 
-    @field:NotNull
-    @field: NotBlank
-    var endereco:String,
+//    @field:NotNull
+//    @field: NotBlank
+//    var endereco:String,
 
     @field:NotNull
     @field: NotBlank
@@ -30,6 +30,8 @@ data class EmpresaDto(
     @field:NotBlank
     var telefone:String,
 
+    @field:NotNull
+    var cnpj: String,
 
 
 

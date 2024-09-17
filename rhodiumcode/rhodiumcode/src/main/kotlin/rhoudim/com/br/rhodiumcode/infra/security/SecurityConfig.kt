@@ -38,6 +38,7 @@ class SecurityConfig(
                 authorizeHttpRequests
                     .requestMatchers(HttpMethod.POST, "/login/**").permitAll()
                     .requestMatchers("/registro/**").permitAll()
+                    .requestMatchers("/empresa/**").permitAll()
                     .anyRequest().authenticated()
             }
             .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter::class.java)

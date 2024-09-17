@@ -11,19 +11,21 @@ class Empresa(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var idEmpresa: Long? = null,
     var nomeEmpresa:String? = null,
-    var endereco:String? = null,
+//    var endereco:String? = null,
     var segmento:String? = null,
     var emailCorporativo:String? = null,
     var telefone:String? = null,
+    var cnpj: String? = null,
 ) {
 
     constructor(empresa:EmpresaDto): this(
         empresa.idEmpresa,
         empresa.nomeEmpresa,
-        empresa.endereco,
+//        empresa.endereco,
         empresa.segmento,
         empresa.emailCorporativo,
-        empresa.telefone
+        empresa.telefone,
+        empresa.cnpj
     )
 
 }

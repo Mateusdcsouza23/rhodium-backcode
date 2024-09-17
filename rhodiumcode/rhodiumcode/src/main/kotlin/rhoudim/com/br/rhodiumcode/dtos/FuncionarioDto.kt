@@ -25,8 +25,8 @@ data class FuncionarioDto(
     var senha:String,
 
 
-    @field:NotNull
-    var fkDepartamento:Long,
+//    @field:NotNull
+//    var fkDepartamento:Long,
 
     @field:NotNull
     var fkEmpresa:Long,
