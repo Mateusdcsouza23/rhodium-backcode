@@ -2,9 +2,17 @@ package rhoudim.com.br.rhodiumcode.entity
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
+enum class StatusSolicitacao {
+    PENDENTE, APROVADA, REJEITADA
+}
+
+enum class TipoCorrecao {
+    ENTRADA, SAIDA
+}
+
 @Entity
 @Table(name = "solicitacao_correcao")
-class SolicitacaoCorrecao(
+data class SolicitacaoAjustePonto(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -23,11 +31,13 @@ class SolicitacaoCorrecao(
     val motivo: String,
 
     @Column(nullable = true)
-    val dataCorrecao: LocalDateTime? = null // Data em que a correção foi realizada, se aplicável
-) {
-enum class TipoCorrecao {
-    ENTRADA, SAIDA
-}
-}
+    val dataCorrecao: LocalDateTime? = null, // Data em que a correção foi realizada, se aplicável
+
+    @Column(nullable = false)
+    val descricao: String,
+
+    @Column(nullable = false)
+    var status: StatusSolicitacao = StatusSolicitacao.PENDENTE
+)
 
 
