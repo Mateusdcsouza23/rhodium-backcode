@@ -13,6 +13,12 @@ class GestorService(
         private val funcionarioRepository: FuncionarioRepository
 ) {
 
+    fun obterGestorPorFuncionario(funcionario: Funcionario): Gestor {
+        return gestorRepository.findByLideradosContains(funcionario).orElseThrow {
+            IllegalArgumentException("Nenhum gestor encontrado para o funcionário.")
+        }
+    }
+
     fun adicionarSolicitacao(gestorId: Int, solicitacao: SolicitacaoAjustePonto) {
         val funcionario = funcionarioRepository.findById(solicitacao.funcionario.id)
                 .orElseThrow { IllegalArgumentException("Funcionário não encontrado.") }

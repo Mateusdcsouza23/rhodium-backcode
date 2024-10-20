@@ -10,4 +10,7 @@ import java.util.*
 @Repository
 interface GestorRepository : JpaRepository<Gestor, Int> {
     fun findByLideradosContains(funcionario: Funcionario): Gestor?
+    fun findGestorById(id: Long): Optional<Gestor>
+    @Query("SELECT g FROM Gestor g JOIN g.funcionarios f WHERE f.id = :funcionarioId")
+    fun findGestorByFuncionarioId(@Param("funcionarioId") funcionarioId: Long): Optional<Gestor>
 }
